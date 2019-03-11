@@ -7,24 +7,38 @@
 <body>
 <canvas id="myCanvas" width="500px" height="330px" style="border:1px solid #d3d3d3;"></canvas>
 <script>
-    let rectangle = function (x, y) {
-        this.weight = x;
-        this.height = y;
+    let Rectangle = function (width, height) {
+        this.width = width;
+        this.height = height;
         this.perimeter = function () {
-            return 2 * (x + y);
+            return 2 * (this.width + this.height);
         };
         this.area = function () {
-            return x * y;
+            return this.width * this.height;
         };
-        this.creatRectangel = function () {
+        this.change_width = function (width) {
+             this.width = width;
+
+        };
+        this.change_height = function (height) {
+             this.height = height;
+        };
+        this.creatRectange = function () {
             let ctx = document.getElementById("myCanvas").getContext("2d");
-            ctx.strokeRect(200, 100, x, y);
+            ctx.strokeRect(200, 150, this.width, this.height);
         }
     };
-    let rectangle1 = new rectangle(30, 110);
-    rectangle1.creatRectangel();
-    alert(rectangle1.perimeter());
-    alert(rectangle1.area());
+    let rectangle = new Rectangle(30, 110);
+
+    rectangle.change_width(50);
+    rectangle.change_height(150);
+
+    console.log(rectangle.width);
+
+    rectangle.creatRectange();
+
+    alert("the perimeter is: " + rectangle.perimeter());
+    alert("the area is: " + rectangle.area())
 </script>
 </body>
 </html>
